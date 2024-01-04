@@ -1,6 +1,16 @@
-const Server = require('./server/server.js');
 require('dotenv').config();
+const express = require('express');
+const usersRouter = require('./routes/users');
+// const path = require('path');
 
-const server = new Server();
+const app = express();
 
-server.listen();
+// Importar rutas
+
+const port = process.env.PORT;
+app.listen(port, () => {
+  console.log(`El servidor está escuchando en el puerto ${port}`);
+});
+
+// Instalar rutas
+app.use('/users', usersRouter);
